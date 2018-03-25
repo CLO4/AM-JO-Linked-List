@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-  </head>
+<head>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
   <body>
-    <article class="bookmark-container">
+    <main>
+      <section>
+          <h3>Linked<img src="linked-list-logo.svg">List</h3>
+        <input class="website-title" type="text" name="website-title" placeholder="Website Title">
+        <input class="website-url" type="text" name="website-url" placeholder="Website URL">
+        <button class="enter-button">Enter</button>
+      </section>
+    </main>
+    <aside>
+      <article class="bookmark-container">
       <p class="bookmark-name">The Website Title</p>
       <hr>
       <p class="url-line"><a href="" class="website-url">www.thewebsiteurl.com</a></p>
       <hr>
       <button name="read" class="not-read">Read</button><button name="delete" class="delete">Delete</button>
     </article>
+    </aside>
   </body>
-  <script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="script.js"></script>
 </html>
