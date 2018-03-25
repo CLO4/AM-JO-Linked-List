@@ -22,12 +22,50 @@ readButton.onclick = function changeStatus() {
     addRead();
   }
 }
+enterButton.onclick = function createBookmark() {
+  addBookmark = document.createElement("article");
+  var bookmarkArea = document.querySelector(".add-bookmark");
+  bookmarkArea.appendChild(addBookmark);
+  addBookmark.classList.add("bookmark-container");
+  addWebName();
+  addUrl();
+  addButtons();
+}
 
-enterButton.onclick = function() {
-  var para = document.createElement("p");
-  var node = document.createTextNode("This is New");
-  para.appendChild(node);
-  var bookmarkArea = document.querySelector(".bookmark-area");
-  bookmarkArea.appendChild(para);
-};
+function addWebName() {
+  var webTitle = document.querySelector(".website-title");
+  var webName = document.createTextNode(webTitle.value);
+  var namePara = document.createElement("p");
+  addBookmark.appendChild(namePara);
+  namePara.appendChild(webName);
+  namePara.classList.add("bookmark-name");
+  addHr();
+}
 
+function addUrl() {
+  var webUrl = document.querySelector(".website-url");
+  var addLink = document.createElement("a");
+  var addWebUrl = document.createTextNode(webUrl.value);
+  addBookmark.appendChild(addLink);
+  addLink.appendChild(addWebUrl);
+  addLink.classList.add("url-styling");
+  addHr();
+}
+
+function addHr() {
+  var addHr = document.createElement("hr");
+  addBookmark.appendChild(addHr);
+}
+
+function addButtons() {
+  var newReadButton = document.createElement("button");
+  var readButtonTitle = document.createTextNode("read");
+  var newDeleteButton = document.createElement("button");
+  var deleteButtonTitle = document.createTextNode("delete");
+  addBookmark.appendChild(newReadButton);
+  newReadButton.appendChild(readButtonTitle);
+  newReadButton.classList.add("not-read");
+  addBookmark.appendChild(newDeleteButton);
+  newDeleteButton.appendChild(deleteButtonTitle);
+  newDeleteButton.classList.add("delete");
+}
