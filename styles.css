@@ -73,10 +73,11 @@ img {
 }
 
 .bookmark-container {
-  width: 30%;
+  width: 93%;
   border: 1px solid #607D8B;
   padding: 11px;
-  float: right;
+  margin: 9px;
+  background-color: white;
 }
 
 .read {
@@ -97,7 +98,7 @@ hr {
 
 }
 
-.website-url {
+.url-styling {
   color: #607D8B;
   text-decoration-color: #CFD8DC;
 }
@@ -124,7 +125,7 @@ hr {
   text-decoration-color: #F2F4F4;
 }
 
-.website-url:hover,
+.url-styling:hover,
 .not-read:hover,
 .delete:hover {
   font-weight: bold;
