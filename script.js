@@ -15,7 +15,7 @@ function removeRead() {
 }
 
 readButton.onclick = function changeStatus() {
-  if (container.style.backgroundColor === "#F2F4F4") {
+  if (container.classList.contains("read")) {
     removeRead();
   } else {
     addRead();
