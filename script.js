@@ -61,13 +61,16 @@ function addHr() {
 
 function addButtons() {
   var newReadButton = document.createElement("button");
-  var readButtonTitle = document.createTextNode("read");
+  var readButtonTitle = document.createTextNode("Read");
   var newDeleteButton = document.createElement("button");
-  var deleteButtonTitle = document.createTextNode("delete");
+  var deleteButtonTitle = document.createTextNode("Delete");
   addBookmark.appendChild(newReadButton);
   newReadButton.appendChild(readButtonTitle);
   newReadButton.classList.add("not-read");
   addBookmark.appendChild(newDeleteButton);
   newDeleteButton.appendChild(deleteButtonTitle);
   newDeleteButton.classList.add("delete");
+}
+
+deleteButton.onclick = function() {
 }
