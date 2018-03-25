@@ -1,3 +1,4 @@
+
 .bookmark-container {
   width: 30%;
   border: 1px solid #607D8B;
@@ -59,3 +60,77 @@ hr {
 }
 
 
+=======
+/*General page setup and spacing*/
+html, body {
+  width: 100%;
+  margin: 0px;
+  font-family: Open Sans;
+}
+
+main {
+  position: fixed;
+  background-color: #455A64;
+  width: 50%;
+  height: 100%;
+}
+
+aside {
+  position: absolute;
+  right: 0%;
+  background-color: #CFD8DC;
+  width: 50%;
+  height: 100%;
+}
+
+section {
+  text-align: center;
+  margin: 0px 8%;
+}
+
+/*Page content*/
+h3 {
+  color: #FFFFFF;
+  font-size: 7vw;
+  font-weight: 800;
+  margin: 25% 0px 0px 0px;
+}
+
+img {
+  width: 9vw;
+}
+
+.website-title {
+  display: block;
+  width: 97%;
+  height: 3vw;
+  margin: 4% 0px 8% 0px;
+  padding: 1%;
+  font-size: 3vw;
+}
+
+.website-url {
+  display: block;
+  width: 97%;
+  height: 3vw;
+  padding: 1%;
+  font-size: 3vw;
+}
+
+.enter-button {
+  background-color: #FFC107;
+  color: #FFFFFF;
+  width: 100%;
+  margin: 8% 0px;
+  padding: 1%;
+  font-family: Open Sans;
+  font-size: 3vw;
+}
+
+.enter-button:hover {
+  background-color: #FFD773;
+}
+
+::placeholder {
+  color: lightgrey;
+}
