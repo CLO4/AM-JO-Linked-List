@@ -22,7 +22,6 @@ readButton.onclick = function changeStatus() {
     addRead();
   }
 }
-
 enterButton.onclick = function createBookmark() {
   addBookmark = document.createElement("article");
   var bookmarkArea = document.querySelector(".add-bookmark");
@@ -31,7 +30,6 @@ enterButton.onclick = function createBookmark() {
   addWebName();
   addUrl();
   addButtons();
-
 }
 
 function addWebName() {
