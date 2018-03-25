@@ -1,5 +1,5 @@
 
-/*General page setup and spacing*/
+/*General page sizing and right column styling and sizing*/
 html, body {
   width: 100%;
   margin: 0px;
@@ -13,6 +13,12 @@ main {
   height: 100%;
 }
 
+section {
+  text-align: center;
+  margin: 0px 8%;
+}
+
+/*Bookmark and right column page sizing*/
 aside {
   position: absolute;
   right: 0%;
@@ -21,12 +27,14 @@ aside {
   height: 100%;
 }
 
-section {
-  text-align: center;
-  margin: 0px 8%;
+.bookmark-container {
+  border: 1px solid #607D8B;
+  padding: 1% 3%;
+  margin: 3%;
+  background-color: white;
 }
 
-/*Page content*/
+/*Left column of page content styling*/
 h3 {
   color: #FFFFFF;
   font-size: 7vw;
@@ -73,49 +81,34 @@ img {
   color: lightgrey;
 }
 
-.bookmark-container {
-  width: 93%;
-  border: 1px solid #607D8B;
-  padding: 11px;
-  margin: 9px;
-  background-color: white;
-}
-
-.read {
-  background-color: #F2F4F4;
-}
+/*Right column of page content styling*/
 
 hr {
   color: #CFD8DC;
   background-color: #CFD8DC;
-
 }
 
 .bookmark-name {
   color: #455A64;
-  margin: 0;
-  font-size: 23px;
-  font-weight: bold;
-
+  margin: 0%;
+  font-size: 3vw;
+  font-weight: 800;
 }
 
-.url-styling {
-  color: #607D8B;
-  text-decoration-color: #CFD8DC;
-}
-
-.url-line {
-
+.read {
+  background-color: #F2F4F4;
+  margin: 0%;
 }
 
 .not-read {
   padding: 0;
+  margin: 0%;
 }
-
 
 .delete {
   float: right;
   padding: 0;
+  margin: 0%;
 }
 
 .not-read,
@@ -124,12 +117,85 @@ hr {
   color: #455A64;
   text-decoration: underline;
   text-decoration-color: #F2F4F4;
+  font-size: 1vw;
+  margin: 0%;
 }
 
-.url-styling:hover,
 .not-read:hover,
 .delete:hover {
   font-weight: bold;
   text-decoration: underline;
   text-decoration-color: #FFC107;
+  font-size: 1vw;
+  margin: 0%;
+}
+
+.url-styling {
+  color: #607D8B;
+  text-decoration-color: #CFD8DC;
+  font-size: 2vw;
+  margin: 4% 0%;
+}
+
+.url-styling:hover {
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: #FFC107;
+  font-size: 2vw;
+  margin: 4% 0%;
+}
+
+/*Screen resize to change format of site*/
+@media screen and (max-width: 600px) {
+  main {
+    width: 100%;
+    height: 50vw;
+    z-index: 1;
+  }
+
+  h3 {
+    margin: 0px;
+  }
+
+  .url-styling, 
+  .url-styling:hover {
+    margin: 3% 0%;
+  }
+
+  .bookmark-area {
+    position: absolute;
+    width: 100%;
+    top: 50vw;
+  }
+
+  .website-title {
+    height: 5vw;
+    margin: 4% 0px 5% 0px;
+    font-size: 5vw;
+  }
+
+  .website-url {
+    height: 5vw;
+    margin: 0px;
+    font-size: 5vw;
+  }
+
+  .enter-button {
+    margin: 5% 0px;
+    font-size: 5vw;
+  }
+  .bookmark-name {
+    font-size: 4vw;
+  }
+
+  .url-styling,
+  .read,
+  .not-read,
+  .delete,
+  .url-styling:hover,
+  .read:hover,
+  .not-read:hover,
+  .delete:hover {
+    font-size: 3vw;
+  }
 }
