@@ -1,6 +1,7 @@
 var readButton = document.querySelector(".not-read");
 var deleteButton = document.querySelector(".delete");
 var container = document.querySelector(".bookmark-container");
+var enterButton = document.querySelector(".enter-button");
 
 function addRead() {
   deleteButton.classList.add("read");
@@ -21,3 +22,12 @@ readButton.onclick = function changeStatus() {
     addRead();
   }
 }
+
+enterButton.onclick = function() {
+  var para = document.createElement("p");
+  var node = document.createTextNode("This is New");
+  para.appendChild(node);
+  var bookmarkArea = document.querySelector(".bookmark-area");
+  bookmarkArea.appendChild(para);
+};
+
