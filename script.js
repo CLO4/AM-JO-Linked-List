@@ -2,70 +2,78 @@ var readButton = document.querySelector(".not-read");
 var deleteButton = document.querySelector(".delete");
 var container = document.querySelector(".bookmark-container");
 var enterButton = document.querySelector(".enter-button");
+var nextID = 1;
 
-function addRead() {
-  deleteButton.classList.add("read");
-  readButton.classList.add("read");
-  container.classList.add("read");
+function addRead(bookMark) {
+  bookMark.querySelector(".not-read").classList.add("read");
+  bookMark.querySelector(".delete").classList.add("read");
+  bookMark.classList.add("read");
+  // deleteButton.classList.add("read");
+  // readButton.classList.add("read");
+  // container.classList.add("read");
 }
 
-function removeRead() {
+function removeRead(bookMark) {
   deleteButton.classList.remove("read");
   readButton.classList.remove("read");
   container.classList.remove("read");
 }
 
-readButton.onclick = function changeStatus() {
-  if (container.classList.contains("read")) {
-    removeRead();
+function changeStatus(event) {
+  var bookMark = event.target.parentElement;
+  if (bookMark.classList.contains("read")) {
+    removeRead(bookMark);
   } else {
-    addRead();
-  }
-}
+    addRead(bookMark);
+  }}
+
+readButton.onclick = changeStatus;
+
 enterButton.onclick = function createBookmark() {
-  addBookmark = document.createElement("article");
+  var newBookmark = document.createElement("article");
   var bookmarkArea = document.querySelector(".add-bookmark");
-  bookmarkArea.appendChild(addBookmark);
-  addBookmark.classList.add("bookmark-container");
-  addWebName();
-  addUrl();
-  addButtons();
+  bookmarkArea.appendChild(newBookmark);
+  newBookmark.classList.add("bookmark-container");
+  newBookmark.onclick = changeStatus;
+  addWebName(newBookmark);
+  addUrl(newBookmark);
+  addButtons(newBookmark);
 }
 
-function addWebName() {
+function addWebName(newBookmark) {
   var webTitle = document.querySelector(".website-title");
   var webName = document.createTextNode(webTitle.value);
   var namePara = document.createElement("p");
-  addBookmark.appendChild(namePara);
+  newBookmark.appendChild(namePara);
   namePara.appendChild(webName);
   namePara.classList.add("bookmark-name");
-  addHr();
+  addHr(newBookmark);
 }
 
-function addUrl() {
+function addUrl(newBookmark) {
   var webUrl = document.querySelector(".website-url");
   var addLink = document.createElement("a");
   var addWebUrl = document.createTextNode(webUrl.value);
-  addBookmark.appendChild(addLink);
+  newBookmark.appendChild(addLink);
   addLink.appendChild(addWebUrl);
   addLink.classList.add("url-styling");
-  addHr();
+  addHr(newBookmark);
 }
 
-function addHr() {
+function addHr(newBookmark) {
   var addHr = document.createElement("hr");
-  addBookmark.appendChild(addHr);
+  newBookmark.appendChild(addHr);
 }
 
-function addButtons() {
+function addButtons(newBookmark) {
   var newReadButton = document.createElement("button");
   var readButtonTitle = document.createTextNode("read");
   var newDeleteButton = document.createElement("button");
   var deleteButtonTitle = document.createTextNode("delete");
-  addBookmark.appendChild(newReadButton);
+  newBookmark.appendChild(newReadButton);
   newReadButton.appendChild(readButtonTitle);
   newReadButton.classList.add("not-read");
-  addBookmark.appendChild(newDeleteButton);
+  newBookmark.appendChild(newDeleteButton);
   newDeleteButton.appendChild(deleteButtonTitle);
   newDeleteButton.classList.add("delete");
 }
