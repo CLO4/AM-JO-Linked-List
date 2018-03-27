@@ -67,7 +67,7 @@ function addHr(newBookmark) {
 
 function addButtons(newBookmark) {
   var newReadButton = document.createElement("button");
-  var readButtonTitle = document.createTextNode("read");
+  var readButtonTitle = document.createTextNode("Read");
   var newDeleteButton = document.createElement("button");
   var deleteButtonTitle = document.createTextNode("delete");
   newBookmark.appendChild(newReadButton);
