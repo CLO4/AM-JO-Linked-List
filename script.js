@@ -2,7 +2,6 @@ var readButton = document.querySelector(".not-read");
 var deleteButton = document.querySelector(".delete");
 var container = document.querySelector(".bookmark-container");
 var enterButton = document.querySelector(".enter-button");
-var nextID = 1;
 
 function addRead(bookMark) {
   bookMark.querySelector(".not-read").classList.add("read");
@@ -14,9 +13,12 @@ function addRead(bookMark) {
 }
 
 function removeRead(bookMark) {
-  deleteButton.classList.remove("read");
-  readButton.classList.remove("read");
-  container.classList.remove("read");
+  bookMark.querySelector(".not-read").classList.remove("read");
+  bookMark.querySelector(".delete").classList.remove("read");
+  bookMark.classList.remove("read");
+  // deleteButton.classList.remove("read");
+  // readButton.classList.remove("read");
+  // container.classList.remove("read");
 }
 
 function changeStatus(event) {
@@ -27,7 +29,15 @@ function changeStatus(event) {
     addRead(bookMark);
   }}
 
-readButton.onclick = changeStatus;
+function removeBookmark() {
+  var bookMark = event.target.closest("article");
+  // if (event.target.tagName === "button") {
+    bookMark.remove();
+    }
+
+  
+deleteButton.onclick = removeBookmark;
+readButton.addEventListener('click', changeStatus);
 
 enterButton.onclick = function createBookmark() {
   var newBookmark = document.createElement("article");
@@ -67,9 +77,9 @@ function addHr(newBookmark) {
 
 function addButtons(newBookmark) {
   var newReadButton = document.createElement("button");
-  var readButtonTitle = document.createTextNode("read");
+  var readButtonTitle = document.createTextNode("Read");
   var newDeleteButton = document.createElement("button");
-  var deleteButtonTitle = document.createTextNode("delete");
+  var deleteButtonTitle = document.createTextNode("Delete");
   newBookmark.appendChild(newReadButton);
   newReadButton.appendChild(readButtonTitle);
   newReadButton.classList.add("not-read");
