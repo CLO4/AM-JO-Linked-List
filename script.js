@@ -40,13 +40,8 @@ function toggleButton () {
     enterButton.disabled = false;
   }
 }
-
-function removeBookmark() {
-  $('.delete').parent('.bookmark-container').remove();
-}
   
-deleteButton.onclick = removeBookmark;
-readButton.addEventListener('click', changeStatus);
+// readButton.addEventListener('click', changeStatus);
 
 //--------------Functions to create new Bookmark and enter user info
 function createBookmark() {
@@ -58,6 +53,7 @@ function createBookmark() {
   addWebName(newBookmark);
   addUrl(newBookmark);
   addButtons(newBookmark);
+  readButton.addEventListener('click', changeStatus);
 }
 
 function addWebName(newBookmark) {
@@ -106,7 +102,6 @@ function addRead(bookMark) {
   bookMark.querySelector(".not-read").style.color = "red";
   
 }
-
 
 
 function changeStatus(event) {
