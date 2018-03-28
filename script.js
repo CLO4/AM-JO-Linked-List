@@ -2,9 +2,11 @@ var readButton = document.querySelector(".not-read");
 var deleteButton = document.querySelector(".delete");
 var container = document.querySelector(".bookmark-container");
 var enterButton = document.querySelector(".enter-button");
-var nextID = 1;
 var inputTitle = document.querySelector(".website-title");
 var inputUrl = document.querySelector(".website-url");
+var links = 0;
+var readLinks = 0;
+var unreadLinks = 0;
 
 // ------------------------Function to check user input for validity
 enterButton.onclick = function validateInput () {
@@ -12,6 +14,8 @@ enterButton.onclick = function validateInput () {
     alert("Please Enter a Title and URL");
   } else {
     createBookmark();
+    moreLinks();
+    moreUnreadLinks();
   }
 }
 
@@ -24,9 +28,7 @@ function removeRead(bookMark) {
   bookMark.querySelector(".not-read").classList.remove("read");
   bookMark.querySelector(".delete").classList.remove("read");
   bookMark.classList.remove("read");
-  // deleteButton.classList.remove("read");
-  // readButton.classList.remove("read");
-  // container.classList.remove("read");
+  bookMark.querySelector(".not-read").style.color = "#455A64";
 }
 
 //------------------------EnterButton toggle when inputs are present
@@ -39,15 +41,9 @@ function toggleButton () {
   }
 }
 
-  //   addRead(bookMark);    <--  not sure what this goes to?
-  // }}
-
 function removeBookmark() {
-  var bookMark = event.target.closest("article");
-  // if (event.target.tagName === "button") {
-    bookMark.remove();
-    }
-
+  $('.delete').parent('.bookmark-container').remove();
+}
   
 deleteButton.onclick = removeBookmark;
 readButton.addEventListener('click', changeStatus);
@@ -107,25 +103,57 @@ function addRead(bookMark) {
   bookMark.querySelector(".not-read").classList.add("read");
   bookMark.querySelector(".delete").classList.add("read");
   bookMark.classList.add("read");
-  // deleteButton.classList.add("read");
-  // readButton.classList.add("read");
-  // container.classList.add("read");
+  bookMark.querySelector(".not-read").style.color = "red";
+  
 }
 
-function removeRead(bookMark) {
-  deleteButton.classList.remove("read");
-  readButton.classList.remove("read");
-  container.classList.remove("read");
-}
+
 
 function changeStatus(event) {
   var bookMark = event.target.parentElement;
   if (bookMark.classList.contains("read")) {
     removeRead(bookMark);
+    linkNotRead();
+    moreUnreadLinks();
   } else {
     addRead(bookMark);
-  }
+    linkRead();
+    lessUnreadLinks();
+  } 
 }
 
-readButton.onclick = changeStatus;
+function moreLinks() {
+  links++;
+  var linkLog = document.querySelector(".link-log");
+  linkLog.innerText = "There is/are " + links + " link(s)";
+}
+
+function linkRead() {
+  var readLog = document.querySelector('.read-links');
+    readLinks++;
+    readLog.innerText = "There is/are " + readLinks + " read link(s)";
+  }
+
+function linkNotRead() {
+  var readLog = document.querySelector('.read-links');
+  readLinks--;
+  readLog.innerText = "There is/are " + readLinks + " read link(s)";
+}
+
+function moreUnreadLinks() {
+  var unreadLog = document.querySelector('.unread-links');
+  unreadLinks++;
+  unreadLog.innerText = " and " + unreadLinks + " unread link(s)";
+  console.log('moreUnreadLInks')
+}
+
+function lessUnreadLinks() {
+  var unreadLog = document.querySelector('.unread-links');
+  unreadLog.innerText = " and " + unreadLinks + " unread link(s)";
+  if (unreadLinks === -1) {
+    unreadLinks = 0;
+  } else {
+    unreadLinks--
+  } console.log('lessunreadlink')
+}
 

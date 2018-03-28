@@ -97,7 +97,6 @@ hr {
 
 .read {
   background-color: #F2F4F4;
-  /*margin: 0%;*/
 }
 
 .not-read {
@@ -198,4 +197,16 @@ hr {
   .delete:hover {
     font-size: 3vw;
   }
+}
+
+.link-log {
+  color: white;
+}
+
+.read-links {
+  color: white;
+}
+
+.unread-links {
+  color: white;
 }
