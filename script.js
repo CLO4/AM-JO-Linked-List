@@ -2,9 +2,10 @@ var readButton = document.querySelector(".not-read");
 var deleteButton = document.querySelector(".delete");
 var container = document.querySelector(".bookmark-container");
 var enterButton = document.querySelector(".enter-button");
-var nextID = 1;
 var inputTitle = document.querySelector(".website-title");
 var inputUrl = document.querySelector(".website-url");
+var removeBox = document.querySelector(".add-bookmark");
+
 
 // ------------------------Function to check user input for validity
 enterButton.onclick = function validateInput () {
@@ -15,19 +16,9 @@ enterButton.onclick = function validateInput () {
   }
 }
 
-
 //---------Event listeners to check for added values in input fields
 inputTitle.addEventListener("keyup", toggleButton);
 inputUrl.addEventListener("keyup", toggleButton);
-
-function removeRead(bookMark) {
-  bookMark.querySelector(".not-read").classList.remove("read");
-  bookMark.querySelector(".delete").classList.remove("read");
-  bookMark.classList.remove("read");
-  // deleteButton.classList.remove("read");
-  // readButton.classList.remove("read");
-  // container.classList.remove("read");
-}
 
 //------------------------EnterButton toggle when inputs are present
 function toggleButton () {
@@ -39,26 +30,12 @@ function toggleButton () {
   }
 }
 
-  //   addRead(bookMark);    <--  not sure what this goes to?
-  // }}
-
-function removeBookmark() {
-  var bookMark = event.target.closest("article");
-  // if (event.target.tagName === "button") {
-    bookMark.remove();
-    }
-
-  
-deleteButton.onclick = removeBookmark;
-readButton.addEventListener('click', changeStatus);
-
 //--------------Functions to create new Bookmark and enter user info
 function createBookmark() {
   var newBookmark = document.createElement("article");
   var bookmarkArea = document.querySelector(".add-bookmark");
   bookmarkArea.appendChild(newBookmark);
   newBookmark.classList.add("bookmark-container");
-  newBookmark.onclick = changeStatus;
   addWebName(newBookmark);
   addUrl(newBookmark);
   addButtons(newBookmark);
@@ -103,22 +80,7 @@ function addButtons(newBookmark) {
 }
 
 // --------------------------Create Bookmark functionality elements
-function addRead(bookMark) {
-  bookMark.querySelector(".not-read").classList.add("read");
-  bookMark.querySelector(".delete").classList.add("read");
-  bookMark.classList.add("read");
-  // deleteButton.classList.add("read");
-  // readButton.classList.add("read");
-  // container.classList.add("read");
-}
-
-function removeRead(bookMark) {
-  deleteButton.classList.remove("read");
-  readButton.classList.remove("read");
-  container.classList.remove("read");
-}
-
-function changeStatus(event) {
+readButton.onclick = function changeStatus(event) {
   var bookMark = event.target.parentElement;
   if (bookMark.classList.contains("read")) {
     removeRead(bookMark);
@@ -127,5 +89,24 @@ function changeStatus(event) {
   }
 }
 
-readButton.onclick = changeStatus;
+// Background button color toggle ON 
+function addRead(bookMark) {
+  bookMark.querySelector(".not-read").classList.add("read");
+  bookMark.querySelector(".delete").classList.add("read");
+  bookMark.classList.add("read");
+}
 
+// Background button color toggle OFF
+function removeRead(bookMark) {
+  deleteButton.classList.remove("read");
+  readButton.classList.remove("read");
+  container.classList.remove("read");
+}
+
+// Working Delete for original container
+removeBox.onclick = function deleteBookmark() {
+  var deleteButton = event.target
+  if (event.target.matches('.delete')) {
+    deleteButton.closest('.bookmark-container').remove()
+  }
+}
