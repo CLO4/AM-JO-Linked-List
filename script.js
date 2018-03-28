@@ -149,11 +149,10 @@ function moreUnreadLinks() {
 
 function lessUnreadLinks() {
   var unreadLog = document.querySelector('.unread-links');
-  unreadLog.innerText = " and " + unreadLinks + " unread link(s)";
   if (unreadLinks === -1) {
     unreadLinks = 0;
   } else {
     unreadLinks--
-  } console.log('lessunreadlink')
+  }  unreadLog.innerText = " and " + unreadLinks + " unread link(s)";
 }
 
