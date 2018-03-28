@@ -15,9 +15,19 @@ enterButton.onclick = function validateInput () {
   }
 }
 
+
 //---------Event listeners to check for added values in input fields
 inputTitle.addEventListener("keyup", toggleButton);
 inputUrl.addEventListener("keyup", toggleButton);
+
+function removeRead(bookMark) {
+  bookMark.querySelector(".not-read").classList.remove("read");
+  bookMark.querySelector(".delete").classList.remove("read");
+  bookMark.classList.remove("read");
+  // deleteButton.classList.remove("read");
+  // readButton.classList.remove("read");
+  // container.classList.remove("read");
+}
 
 //------------------------EnterButton toggle when inputs are present
 function toggleButton () {
@@ -28,6 +38,19 @@ function toggleButton () {
     enterButton.disabled = false;
   }
 }
+
+  //   addRead(bookMark);    <--  not sure what this goes to?
+  // }}
+
+function removeBookmark() {
+  var bookMark = event.target.closest("article");
+  // if (event.target.tagName === "button") {
+    bookMark.remove();
+    }
+
+  
+deleteButton.onclick = removeBookmark;
+readButton.addEventListener('click', changeStatus);
 
 //--------------Functions to create new Bookmark and enter user info
 function createBookmark() {
@@ -70,7 +93,7 @@ function addButtons(newBookmark) {
   var newReadButton = document.createElement("button");
   var readButtonTitle = document.createTextNode("Read");
   var newDeleteButton = document.createElement("button");
-  var deleteButtonTitle = document.createTextNode("delete");
+  var deleteButtonTitle = document.createTextNode("Delete");
   newBookmark.appendChild(newReadButton);
   newReadButton.appendChild(readButtonTitle);
   newReadButton.classList.add("not-read");
