@@ -3,33 +3,34 @@ var deleteButton = document.querySelector(".delete");
 var container = document.querySelector(".bookmark-container");
 var enterButton = document.querySelector(".enter-button");
 var nextID = 1;
+var inputTitle = document.querySelector(".website-title");
+var inputUrl = document.querySelector(".website-url");
 
-function addRead(bookMark) {
-  bookMark.querySelector(".not-read").classList.add("read");
-  bookMark.querySelector(".delete").classList.add("read");
-  bookMark.classList.add("read");
-  // deleteButton.classList.add("read");
-  // readButton.classList.add("read");
-  // container.classList.add("read");
-}
-
-function removeRead(bookMark) {
-  deleteButton.classList.remove("read");
-  readButton.classList.remove("read");
-  container.classList.remove("read");
-}
-
-function changeStatus(event) {
-  var bookMark = event.target.parentElement;
-  if (bookMark.classList.contains("read")) {
-    removeRead(bookMark);
+// ------------------------Function to check user input for validity
+enterButton.onclick = function validateInput () {
+  if (inputTitle.value === "" || inputUrl.value === "") {
+    alert("Please Enter a Title and URL");
   } else {
-    addRead(bookMark);
-  }}
+    createBookmark();
+  }
+}
 
-readButton.onclick = changeStatus;
+//---------Event listeners to check for added values in input fields
+inputTitle.addEventListener("keyup", toggleButton);
+inputUrl.addEventListener("keyup", toggleButton);
 
-enterButton.onclick = function createBookmark() {
+//------------------------EnterButton toggle when inputs are present
+function toggleButton () {
+  var disabled;
+  if (inputTitle.value === "" && inputUrl.value === "") {
+    enterButton.disabled = true;
+  } else {
+    enterButton.disabled = false;
+  }
+}
+
+//--------------Functions to create new Bookmark and enter user info
+function createBookmark() {
   var newBookmark = document.createElement("article");
   var bookmarkArea = document.querySelector(".add-bookmark");
   bookmarkArea.appendChild(newBookmark);
@@ -77,3 +78,31 @@ function addButtons(newBookmark) {
   newDeleteButton.appendChild(deleteButtonTitle);
   newDeleteButton.classList.add("delete");
 }
+
+// --------------------------Create Bookmark functionality elements
+function addRead(bookMark) {
+  bookMark.querySelector(".not-read").classList.add("read");
+  bookMark.querySelector(".delete").classList.add("read");
+  bookMark.classList.add("read");
+  // deleteButton.classList.add("read");
+  // readButton.classList.add("read");
+  // container.classList.add("read");
+}
+
+function removeRead(bookMark) {
+  deleteButton.classList.remove("read");
+  readButton.classList.remove("read");
+  container.classList.remove("read");
+}
+
+function changeStatus(event) {
+  var bookMark = event.target.parentElement;
+  if (bookMark.classList.contains("read")) {
+    removeRead(bookMark);
+  } else {
+    addRead(bookMark);
+  }
+}
+
+readButton.onclick = changeStatus;
+

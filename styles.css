@@ -4,6 +4,7 @@ html, body {
   width: 100%;
   margin: 0px;
   font-family: Open Sans;
+  background-color: #CFD8DC;
 }
 
 main {
@@ -22,7 +23,6 @@ section {
 aside {
   position: absolute;
   right: 0%;
-  background-color: #CFD8DC;
   width: 50%;
   height: 100%;
 }
