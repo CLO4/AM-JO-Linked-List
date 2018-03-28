@@ -4,7 +4,7 @@ var container = document.querySelector(".bookmark-container");
 var enterButton = document.querySelector(".enter-button");
 var inputTitle = document.querySelector(".website-title");
 var inputUrl = document.querySelector(".website-url");
-var removeBox = document.querySelector(".add-bookmark");
+var addBoxes = document.querySelector(".add-bookmark");
 
 
 // ------------------------Function to check user input for validity
@@ -80,7 +80,7 @@ function addButtons(newBookmark) {
 }
 
 // --------------------------Create Bookmark functionality elements
-readButton.onclick = function changeStatus(event) {
+function changeStatus(event) {
   var bookMark = event.target.parentElement;
   if (bookMark.classList.contains("read")) {
     removeRead(bookMark);
@@ -92,21 +92,29 @@ readButton.onclick = function changeStatus(event) {
 // Background button color toggle ON 
 function addRead(bookMark) {
   bookMark.querySelector(".not-read").classList.add("read");
-  bookMark.querySelector(".delete").classList.add("read");
+// bookMark.querySelector(".delete").classList.add("read");
   bookMark.classList.add("read");
 }
 
 // Background button color toggle OFF
 function removeRead(bookMark) {
-  deleteButton.classList.remove("read");
-  readButton.classList.remove("read");
-  container.classList.remove("read");
+  bookMark.classList.remove("read");
+}
+
+// read button functionality
+addBoxes.onclick =function readDamit() {
+  var readButton = event.target
+  if (event.target.matches('.not-read')) {
+    console.log('helloooo');
+    changeStatus(event);
+  }
 }
 
 // Working Delete for original container
-removeBox.onclick = function deleteBookmark() {
+addBoxes.onclick = function deleteBookmark() {
+  console.log('shit');
   var deleteButton = event.target
-  if (event.target.matches('.delete')) {
+  if (deleteButton.matches('.delete')) {
     deleteButton.closest('.bookmark-container').remove()
   }
 }
