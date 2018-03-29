@@ -203,3 +203,15 @@ hr {
     left:80%;
   }
 }
+
+.link-log {
+  color: white;
+}
+
+.read-links {
+  color: white;
+}
+
+.unread-links {
+  color: white;
+}
