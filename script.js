@@ -1,6 +1,3 @@
-var readButton = document.querySelector(".not-read");
-var deleteButton = document.querySelector(".delete");
-var container = document.querySelector(".bookmark-container");
 var enterButton = document.querySelector(".enter-button");
 var inputTitle = document.querySelector(".website-title");
 var inputUrl = document.querySelector(".website-url");
@@ -40,8 +37,6 @@ function toggleButton () {
     enterButton.disabled = false;
   }
 }
-  
-// readButton.addEventListener('click', changeStatus);
 
 //--------------Functions to create new Bookmark and enter user info
 function createBookmark() {
@@ -49,11 +44,9 @@ function createBookmark() {
   var bookmarkArea = document.querySelector(".add-bookmark");
   bookmarkArea.appendChild(newBookmark);
   newBookmark.classList.add("bookmark-container");
-  newBookmark.onclick = changeStatus;
   addWebName(newBookmark);
   addUrl(newBookmark);
   addButtons(newBookmark);
-  readButton.addEventListener('click', changeStatus);
 }
 
 function addWebName(newBookmark) {
@@ -92,10 +85,18 @@ function addButtons(newBookmark) {
   newBookmark.appendChild(newDeleteButton);
   newDeleteButton.appendChild(deleteButtonTitle);
   newDeleteButton.classList.add("delete");
+  newReadButton.addEventListener('click', changeStatus);
+  newDeleteButton.addEventListener('click', removeContainer);
 }
+
+function removeContainer(event) {
+    var bookMark = event.target.parentElement;
+    bookMark.remove();
+  }
 
 // --------------------------Create Bookmark functionality elements
 function addRead(bookMark) {
+  console.log(bookMark);
   bookMark.querySelector(".not-read").classList.add("read");
   bookMark.querySelector(".delete").classList.add("read");
   bookMark.classList.add("read");
@@ -139,7 +140,7 @@ function moreUnreadLinks() {
   var unreadLog = document.querySelector('.unread-links');
   unreadLinks++;
   unreadLog.innerText = " and " + unreadLinks + " unread link(s)";
-  console.log('moreUnreadLInks')
+
 }
 
 function lessUnreadLinks() {
@@ -147,7 +148,7 @@ function lessUnreadLinks() {
   if (unreadLinks === -1) {
     unreadLinks = 0;
   } else {
-    unreadLinks--
+    unreadLinks--;
   }  unreadLog.innerText = " and " + unreadLinks + " unread link(s)";
 }
 
