@@ -157,6 +157,7 @@ addBoxes.onclick =function readDamit() {
     console.log('helloooo');
     changeStatus(event);
   }
+}
 
 function linkNotRead() {
   var readLog = document.querySelector('.read-links');
