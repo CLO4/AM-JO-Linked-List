@@ -4,6 +4,7 @@ var inputUrl = document.querySelector(".website-url");
 var links = 0;
 var readLinks = 0;
 var unreadLinks = 0;
+var addBoxes = document.querySelector(".add-bookmark");
 
 // ------------------------Function to check user input for validity
 enterButton.onclick = function validateInput () {
@@ -15,7 +16,6 @@ enterButton.onclick = function validateInput () {
     moreUnreadLinks();
   }
 }
-
 
 //---------Event listeners to check for added values in input fields
 inputTitle.addEventListener("keyup", toggleButton);
@@ -95,13 +95,21 @@ function removeContainer(event) {
   }
 
 // --------------------------Create Bookmark functionality elements
+function changeStatus(event) {
+  var bookMark = event.target.parentElement;
+  if (bookMark.classList.contains("read")) {
+    removeRead(bookMark);
+  } else {
+    addRead(bookMark);
+  }
+}
+
+// Background button color toggle ON 
 function addRead(bookMark) {
-  console.log(bookMark);
   bookMark.querySelector(".not-read").classList.add("read");
-  bookMark.querySelector(".delete").classList.add("read");
+// bookMark.querySelector(".delete").classList.add("read");
   bookMark.classList.add("read");
   bookMark.querySelector(".not-read").style.color = "red";
-  
 }
 
 
@@ -128,6 +136,19 @@ function linkRead() {
   var readLog = document.querySelector('.read-links');
     readLinks++;
     readLog.innerText = "There is/are " + readLinks + " read link(s)";
+}
+
+// Background button color toggle OFF
+function removeRead(bookMark) {
+  bookMark.classList.remove("read");
+}
+
+// read button functionality
+addBoxes.onclick =function readDamit() {
+  var readButton = event.target
+  if (event.target.matches('.not-read')) {
+    console.log('helloooo');
+    changeStatus(event);
   }
 
 function linkNotRead() {
@@ -152,3 +173,10 @@ function lessUnreadLinks() {
   }  unreadLog.innerText = " and " + unreadLinks + " unread link(s)";
 }
 
+// Working Delete for original container
+addBoxes.onclick = function deleteBookmark() {
+  var deleteButton = event.target
+  if (deleteButton.matches('.delete')) {
+    deleteButton.closest('.bookmark-container').remove()
+  }
+}
