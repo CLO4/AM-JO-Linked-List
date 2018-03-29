@@ -105,7 +105,8 @@ hr {
 }
 
 .delete {
-  float: right;
+  position: relative;
+  left:85%;
   padding: 0;
   margin: 0%;
 }
@@ -196,6 +197,10 @@ hr {
   .not-read:hover,
   .delete:hover {
     font-size: 3vw;
+  }
+
+  .delete {
+    left:80%;
   }
 }
 
