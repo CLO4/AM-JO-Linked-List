@@ -92,6 +92,7 @@ function addButtons(newBookmark) {
 function removeContainer(event) {
     var bookMark = event.target.parentElement;
     bookMark.remove();
+    lessLinksByDelete();
   }
 
 // --------------------------Create Bookmark functionality elements
@@ -116,6 +117,12 @@ function changeStatus(event) {
     linkRead();
     lessUnreadLinks();
   } 
+}
+
+function lessLinksByDelete() {
+  links--;
+  var linkLog = document.querySelector(".link-log");
+  linkLog.innerText = "There is/are " + links + " link(s)";
 }
 
 function moreLinks() {
@@ -145,7 +152,7 @@ function moreUnreadLinks() {
 
 function lessUnreadLinks() {
   var unreadLog = document.querySelector('.unread-links');
-  if (unreadLinks === -1) {
+  if (unreadLinks < 0) {
     unreadLinks = 0;
   } else {
     unreadLinks--;
